@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+$header-height: 3.5em;
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header {
+    .app-logo {
+        margin-top: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Staatliches;
+        font-weight: 400;
+        color: #222;
+        font-size: 3em;
+        &-title-part {
+            line-height: 1;
+        }
+    }
+}
+
+main {
+    width: 100vw;
+    height: 75vh;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &.--newGame:hover {
+            cursor: pointer;
+        }
+    }
+    .board {
+        display: grid;
+        grid-template-columns: repeat(2, 25vw [line-ver]) 25vw;
+        grid-template-rows: repeat(2, 25vw [line-hor]) 25vw;
+        grid-gap: 5px;
+        background-color: #000;
+        &-tile {
+            background-color: #ffffff;
+            position: relative;
+            &.--empty:hover {
+                cursor: pointer;
+                &.--gameResolved {
+                    pointer-events: none;
+                }
+            }
+            &.--nought::before {
+                content: '';
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0);
+                border: 16px solid red;
+                border-radius: 50%;
+                position: absolute;
+                top: -16px;
+                left: -16px;
+                transform: scale(.4);
+            }
+            &.--cross {
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 16%;
+                    background-color: #00f;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0, -50%) rotate(-45deg) scale(.62);
+                }
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 16%;
+                    background-color: #00f;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0, -50%) rotate(45deg) scale(.62);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1053px) {
+    .container {
+        justify-content: flex-start;
+    }
+    main {
+        display: grid;
+        grid-template-columns: 45vw [line-ver] 45vw;
+        .board {
+            justify-self: center;
+            grid-template-columns: repeat(2, 15vh [line-ver]) 15vh;
+            grid-template-rows: repeat(2, 15vh [line-hor]) 15vh;
+            &-tile {
+                &.--nought::before {
+                    border: 28px solid red;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(0.4);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 713px) and (max-width: 1052px) {
+    main {
+        display: grid;
+        grid-template-columns: 45vw [line-ver] 45vw;
+        .board {
+            justify-self: center;
+            grid-template-columns: repeat(2, 90px [line-ver]) 90px;
+            grid-template-rows: repeat(2, 90px [line-hor]) 90px;
+        }
+    }
+}
+
+@media (min-width: 395px) and (max-width: 712px) {
+    main {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 80vh;
+        justify-content: space-evenly;
+        .board {
+            grid-template-columns: repeat(2, 90px [line-ver]) 90px;
+            grid-template-rows: repeat(2, 90px [line-hor]) 90px;
+        }
+    }
+}
+
+@media (max-width: 394px) {
+    .message {
+        position: absolute;
+        top: 1vh;
+    }
+}
