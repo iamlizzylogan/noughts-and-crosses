@@ -6,6 +6,9 @@ $header-height: 3.5em;
 * {
     box-sizing: border-box;
     user-select: none;
+    &::-moz-focus-inner {
+        border: 0;
+    }
 }
 
 body {
@@ -53,8 +56,104 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        &.--newGame:hover {
-            cursor: pointer;
+        &__text {
+            &Winner {
+                position: relative;
+                text-transform: uppercase;
+                font-weight: 800;
+            }
+        }
+        &.--start {
+            .message__button {
+                display: none;
+            }
+        }
+        &.--gameover {
+            .message__button {
+                color: #f1f1f1;
+                margin-top: 7px;
+                padding: 9px 18px;
+                font-size: 1em;
+                background: #303030;
+                border: 1px solid #f1f1f1;
+                border-radius: 4px;
+                &:hover {
+                    cursor: pointer;
+                    background: lighten(#303030, 5%);
+                    transition: ease-in .25s;
+                }
+            }
+        }
+        &.--noughts {
+            .message {
+                &__textWinner::before {
+                    content: '';
+                    width: 2em;
+                    height: 2em;
+                    position: absolute;
+                    left: -49px;
+                    transform: translateY(-18%);
+                    background: rgba(0,0,0,0);
+                    border: 5px solid #dc143c;
+                    border-radius: 50%;
+                }
+                &__button {
+                    color: #f1f1f1;
+                    margin-top: 7px;
+                    padding: 9px 18px;
+                    font-size: 1em;
+                    background: #302222;
+                    border: 1px solid #dc143c;
+                    border-radius: 4px;
+                    &:hover {
+                        cursor: pointer;
+                        background: lighten(#302222, 5%);
+                        transition: ease-in .25s;
+                    }
+                }
+            }
+        }
+        &.--crosses {
+            .message {
+                &__textWinner {
+                    &::after {
+                        content: '';
+                        height: 2.5em;
+                        padding: 4px;
+                        border-left: 7px solid #008080;
+                        background: rgba(0,0,0,0);
+                        position: absolute;
+                        left: -31px;
+                        transform: rotate(-45deg);
+                        top: -15px;
+                    }
+                    &::before {
+                        content: '';
+                        height: 2.5em;
+                        padding: 4px;
+                        border-left: 7px solid #008080;
+                        background: rgba(0,0,0,0);
+                        position: absolute;
+                        left: -31px;
+                        transform: rotate(45deg);
+                        top: -9px;
+                    }
+                }
+                &__button {
+                    color: #f1f1f1;
+                    margin-top: 7px;
+                    padding: 9px 18px;
+                    font-size: 1em;
+                    background: #223030;
+                    border: 1px solid #008080;
+                    border-radius: 4px;
+                    &:hover {
+                        cursor: pointer;
+                        background: lighten(#223030, 5%);
+                        transition: ease-in .25s;
+                    }
+                }
+            }
         }
     }
     .board {
