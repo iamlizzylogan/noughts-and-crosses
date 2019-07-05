@@ -16,6 +16,7 @@ class App extends Component {
         ];
         this.state = {
             currentOwner: "nought",
+            winner: "",
             noughtOwned: [],
             crossOwned: [],
             victory: false,
@@ -62,9 +63,9 @@ class App extends Component {
                 messagePlayAgain: "Play again?"
             });
             if (owner === "nought") {
-                this.setState({ message: "Noughts have won!"})
+                this.setState({ winner: owner, message: "Noughts have won!"})
             } else if (owner === "cross") {
-                this.setState({ message: "Crosses have won!"})
+                this.setState({ winner: owner, message: "Crosses have won!"})
             }
         } else if (this.state[name].length === 5 && !this.state.victory) {
             this.setState({ message: "Game over!", messagePlayAgain: "Play again?"})
@@ -106,8 +107,8 @@ class App extends Component {
                         {this.generateTiles()}
                     </div>
                     <div className="message">
-                        <span className="message-text --gameOver">{this.state.message}</span>
-                        <span className="message-text --newGame" onClick={() => this.reset()}>{this.state.messagePlayAgain}</span>
+                        <span className={`message__text --${this.state.winner}`}>{this.state.message}</span>
+                        <span className="message__text --newGame" onClick={() => this.reset()}>{this.state.messagePlayAgain}</span>
                     </div>
                 </main>
             </div>
