@@ -17,6 +17,7 @@ class App extends Component {
         this.state = {
             currentOwner: "nought",
             winner: "",
+            winningCombination: {},
             noughtOwned: [],
             crossOwned: [],
             victory: false,
@@ -52,12 +53,11 @@ class App extends Component {
 
     checkWinner(owner) {
         const name = `${owner}Owned`;
-        if (!!this.combinations.map(combination =>
-            combination.every(element =>
-                this.state[name].includes(element))).reduce((prev, curr) =>
-                    prev |= curr)) {
+        const check = this.combinations.map(combination => combination.every(element => this.state[name].includes(element)));
+        if (!!check.reduce((prev, curr) => prev |= curr)) {
             this.setState({
                 currentOwner: null,
+                winningCombination: check.indexOf(true),
                 victory: true,
                 messagePlayAgain: "Play again"
             });
@@ -84,6 +84,7 @@ class App extends Component {
         this.setState({
             currentOwner: "nought",
             winner: "",
+            winningCombination: {},
             noughtOwned: [],
             crossOwned: [],
             victory: false,
@@ -94,6 +95,7 @@ class App extends Component {
     }
 
     render() {
+        const {winner, winningCombination} = this.state;
         return (
             <div className="container">
                 <header>
@@ -103,14 +105,19 @@ class App extends Component {
                     </div>
                 </header>
                 <main>
-                    <div className={"board" + (this.state.winner ? ` --finish` : ``)} onClick={this.state.winner ? () => this.reset() : null}>
+                    <div className={"board" + (winner ? ` --finish` : ``)} onClick={winner ? () => this.reset() : null}>
                         {this.generateTiles()}
+                        {this.state.victory ?
+                            <div className={"strikeout"
+                                + ` --combination-${winningCombination}`
+                                + (winningCombination >= 6 ? ` --diagonal` : winningCombination >= 3 ? ` --vertical` : winningCombination >= 0 ? ` --horizontal` : ``)}></div>
+                        : null}
                     </div>
 
                     {/* TODO: Refactor this to a separate component */ }
-                    <div className={"message" + (this.state.winner ? ` --${this.state.winner}` : ` --start`)}>
+                    <div className={"message" + (winner ? ` --${winner}` : ` --start`)}>
                         <span className="message__text">
-                            <span className="message__textWinner">{this.state.winner}</span>
+                            <span className="message__textWinner">{winner}</span>
                             {this.state.message}
                         </span>
                         <button className="message__button" onClick={() => this.reset()}>{this.state.messagePlayAgain}</button>

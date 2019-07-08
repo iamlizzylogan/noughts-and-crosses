@@ -173,6 +173,7 @@ main {
     }
     .board {
         display: grid;
+        position: relative;
         grid-template-columns: repeat(2, 25vw [line-ver]) 25vw;
         grid-template-rows: repeat(2, 25vw [line-hor]) 25vw;
         grid-gap: 5px;
@@ -219,6 +220,66 @@ main {
         }
         &.--finish:hover {
             cursor: pointer;
+        }
+    }
+}
+
+.strikeout {
+    position: absolute;
+    border: 3px solid #fff;
+    border-radius: 3px;
+    &.--horizontal {
+        width: 90%;
+        height: 0;
+        transform: translateY(-50%);
+        &.--combination- {
+            &0 {
+                top: 16.666%;
+                left: 5%;
+            }
+            &1 {
+                top: 50%;
+                left: 5%;
+            }
+            &2 {
+                top: 83.333%;
+                left: 5%;
+            }
+        }
+    }
+    &.--vertical {
+        width: 0;
+        height: 90%;
+        transform: translateX(-50%);
+        &.--combination- {
+            &3 {
+                top: 5%;
+                left: 16.666%;
+            }
+            &4 {
+                top: 5%;
+                left: 50%;
+            }
+            &5 {
+                top: 5%;
+                left: 83.333%;
+            }
+        }
+    }
+    &.--diagonal {
+        width: 0;
+        height: 127.279%;
+        &.--combination- {
+            &6 {
+                left: 50%;
+                top: -13.64%;
+                transform: translate(-50%) rotate(-45deg);
+            }
+            &7 {
+                left: 50%;
+                top: -13.64%;
+                transform: translate(-50%) rotate(45deg);
+            }
         }
     }
 }
