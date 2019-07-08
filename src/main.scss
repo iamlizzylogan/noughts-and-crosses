@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Staatliches');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap');
 
 $header-height: 3.5em;
 
@@ -18,6 +18,7 @@ body {
 .container {
     height: 100vh;
     font-family: sans-serif;
+    white-space: pre-wrap;
     color: #f1f1f1;
     background: #222;
     position: fixed;
@@ -57,8 +58,12 @@ main {
         flex-direction: column;
         align-items: center;
         &__text {
+            display: inline-flex;
+            align-items: center;
+            font-size: 17px;
             &Winner {
-                position: relative;
+                display: inline-flex;
+                align-items: center;
                 text-transform: uppercase;
                 font-weight: 800;
             }
@@ -68,19 +73,29 @@ main {
                 display: none;
             }
         }
-        &.--gameover {
-            .message__button {
-                color: #f1f1f1;
-                margin-top: 7px;
-                padding: 9px 18px;
-                font-size: 1em;
-                background: #303030;
-                border: 1px solid #f1f1f1;
-                border-radius: 4px;
-                &:hover {
-                    cursor: pointer;
-                    background: lighten(#303030, 5%);
-                    transition: ease-in .25s;
+        &.--draw {
+            .message {
+                &__text {
+                    letter-spacing: 0.03em;
+                    &Winner {
+                        margin-right: 1px;
+                        order: 1;
+                    }
+                }
+                &__button {
+                    color: #f1f1f1;
+                    font-family: inherit;
+                    margin-top: 14px;
+                    padding: 11px 56px;
+                    font-size: 1em;
+                    background: #303030;
+                    border: 1px solid #f1f1f1;
+                    border-radius: 4px;
+                    &:hover {
+                        cursor: pointer;
+                        background: lighten(#303030, 5%);
+                        transition: ease-in .25s;
+                    }
                 }
             }
         }
@@ -88,19 +103,18 @@ main {
             .message {
                 &__textWinner::before {
                     content: '';
-                    width: 2em;
-                    height: 2em;
-                    position: absolute;
-                    left: -49px;
-                    transform: translateY(-18%);
+                    width: 1em;
+                    height: 1em;
+                    margin-right: 7px;
                     background: rgba(0,0,0,0);
                     border: 5px solid #dc143c;
                     border-radius: 50%;
                 }
                 &__button {
                     color: #f1f1f1;
-                    margin-top: 7px;
-                    padding: 9px 18px;
+                    font-family: inherit;
+                    margin-top: 14px;
+                    padding: 11px 56px;
                     font-size: 1em;
                     background: #302222;
                     border: 1px solid #dc143c;
@@ -115,34 +129,35 @@ main {
         }
         &.--crosses {
             .message {
-                &__textWinner {
-                    &::after {
-                        content: '';
-                        height: 2.5em;
-                        padding: 4px;
-                        border-left: 7px solid #008080;
-                        background: rgba(0,0,0,0);
-                        position: absolute;
-                        left: -31px;
-                        transform: rotate(-45deg);
-                        top: -15px;
-                    }
-                    &::before {
-                        content: '';
-                        height: 2.5em;
-                        padding: 4px;
-                        border-left: 7px solid #008080;
-                        background: rgba(0,0,0,0);
-                        position: absolute;
-                        left: -31px;
-                        transform: rotate(45deg);
-                        top: -9px;
+                &__text {
+                    margin-right: -7px;
+                    &Winner {
+                        &::after {
+                            content: '';
+                            height: 1.41em;
+                            padding: 4px;
+                            border-left: 7px solid #008080;
+                            background: rgba(0,0,0,0);
+                            transform: rotate(-45deg) translate(-27%, -27%);
+                            order: -1;
+                        }
+                        &::before {
+                            content: '';
+                            height: 1.41em;
+                            padding: 4px;
+                            margin-right: -10px;
+                            border-left: 7px solid #008080;
+                            background: rgba(0,0,0,0);
+                            transform: rotate(45deg) translate(-10%, 13%);
+                            order: -1;
+                        }
                     }
                 }
                 &__button {
                     color: #f1f1f1;
-                    margin-top: 7px;
-                    padding: 9px 18px;
+                    font-family: inherit;
+                    margin-top: 14px;
+                    padding: 11px 56px;
                     font-size: 1em;
                     background: #223030;
                     border: 1px solid #008080;

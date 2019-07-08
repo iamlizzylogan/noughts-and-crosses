@@ -68,7 +68,7 @@ class App extends Component {
                 this.setState({ winner: "crosses", message: " have won"})
             }
         } else if (this.state[name].length === 5 && !this.state.victory) {
-            this.setState({ message: "Game over!", messagePlayAgain: "Play again"})
+            this.setState({ winner: "draw", message: "It's a ", messagePlayAgain: "Play again"})
         } else null;
     }
 
@@ -109,7 +109,7 @@ class App extends Component {
                     </div>
 
                     {/* TODO: Refactor this to a separate component */ }
-                    <div className={"message" + (this.state.winner ? ` --${this.state.winner}` : this.state.message === "Game over!" ? ` --gameover` : ` --start`)}>
+                    <div className={"message" + (this.state.winner ? ` --${this.state.winner}` : ` --start`)}>
                         <span className="message__text">
                             <span className="message__textWinner">{this.state.winner}</span>
                             {this.state.message}
