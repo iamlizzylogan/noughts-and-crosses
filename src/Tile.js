@@ -7,7 +7,6 @@ export default class Tile extends Component {
         this.id = props.id;
         this.onClick = props.onClick;
         this.targetOwnership = props.targetOwnership;
-        this.gameResolved = props.gameResolved;
         this.shouldTileReset = props.shouldTileReset;
         this.onReset = props.onReset;
         this.state = {
@@ -19,7 +18,6 @@ export default class Tile extends Component {
     componentWillReceiveProps(nextProps) {
         this.targetOwnership = nextProps.targetOwnership;
         this.onClick = nextProps.onClick;
-        this.gameResolved = nextProps.gameResolved;
         this.shouldTileReset = nextProps.shouldTileReset;
 
         this.shouldTileReset ? this.reset() : null;
@@ -34,7 +32,7 @@ export default class Tile extends Component {
     }
 
     onTileClick() {
-        if (!this.state.ownership && !this.gameResolved) {
+        if (!this.state.ownership) {
             this.toggleEmpty();
             this.setOwnership();
             this.onClick();
@@ -42,9 +40,6 @@ export default class Tile extends Component {
     }
 
     setClassNames() {
-        if (this.state.empty && this.gameResolved) {
-            return `board-tile --empty --gameResolved`
-        }
         if (this.state.empty) {
             return `board-tile --empty`
         } else if (this.state.ownership) {

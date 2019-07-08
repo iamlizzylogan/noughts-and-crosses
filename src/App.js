@@ -37,7 +37,6 @@ class App extends Component {
             }
             : null}
             targetOwnership={this.state.currentOwner}
-            gameResolved={this.state.victory}
             shouldTileReset={this.state.tilesShouldReset}
             onReset={this.toggleTilesShouldReset.bind(this)}
             key={index} id={index} />
@@ -104,7 +103,7 @@ class App extends Component {
                     </div>
                 </header>
                 <main>
-                    <div className="board">
+                    <div className={"board" + (this.state.winner ? ` --finish` : ``)} onClick={this.state.winner ? () => this.reset() : null}>
                         {this.generateTiles()}
                     </div>
 

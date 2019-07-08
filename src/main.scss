@@ -182,9 +182,6 @@ main {
             position: relative;
             &.--empty:hover {
                 cursor: pointer;
-                &.--gameResolved {
-                    pointer-events: none;
-                }
             }
             &.--nought::before {
                 content: '';
@@ -218,6 +215,9 @@ main {
                     transform: translate(0, -50%) rotate(45deg) scale(.62);
                 }
             }
+        }
+        &.--finish:hover {
+            cursor: pointer;
         }
     }
 }
