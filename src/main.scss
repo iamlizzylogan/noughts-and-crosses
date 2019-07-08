@@ -19,7 +19,7 @@ body {
     height: 100vh;
     font-family: sans-serif;
     white-space: pre-wrap;
-    color: #f1f1f1;
+    color: #dadada;
     background: #222;
     position: fixed;
     display: flex;
@@ -83,13 +83,13 @@ main {
                     }
                 }
                 &__button {
-                    color: #f1f1f1;
+                    color: #dadada;
                     font-family: inherit;
                     margin-top: 14px;
                     padding: 11px 56px;
                     font-size: 1em;
                     background: #303030;
-                    border: 1px solid #f1f1f1;
+                    border: 1px solid #dadada;
                     border-radius: 4px;
                     &:hover {
                         cursor: pointer;
@@ -111,7 +111,7 @@ main {
                     border-radius: 50%;
                 }
                 &__button {
-                    color: #f1f1f1;
+                    color: #dadada;
                     font-family: inherit;
                     margin-top: 14px;
                     padding: 11px 56px;
@@ -154,7 +154,7 @@ main {
                     }
                 }
                 &__button {
-                    color: #f1f1f1;
+                    color: #dadada;
                     font-family: inherit;
                     margin-top: 14px;
                     padding: 11px 56px;
@@ -176,7 +176,7 @@ main {
         grid-template-columns: repeat(2, 25vw [line-ver]) 25vw;
         grid-template-rows: repeat(2, 25vw [line-hor]) 25vw;
         grid-gap: 5px;
-        background: #f1f1f1;
+        background: #dadada;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         &-tile {
             background: #222;
