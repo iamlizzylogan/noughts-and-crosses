@@ -177,6 +177,7 @@ main {
         grid-template-rows: repeat(2, 25vw [line-hor]) 25vw;
         grid-gap: 5px;
         background: #f1f1f1;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
         &-tile {
             background: #222;
             position: relative;
@@ -259,13 +260,17 @@ main {
 
 @media (min-width: 395px) and (max-width: 712px) {
     main {
+        height: 80vh;
         display: flex;
         flex-direction: column-reverse;
-        height: 80vh;
         justify-content: space-evenly;
         .board {
             grid-template-columns: repeat(2, 90px [line-ver]) 90px;
             grid-template-rows: repeat(2, 90px [line-hor]) 90px;
+        }
+        .message {
+            position: absolute;
+            top: 0;
         }
     }
 }
@@ -274,5 +279,8 @@ main {
     .message {
         position: absolute;
         top: 1vh;
+        &__button {
+            display: none;
+        }
     }
 }
