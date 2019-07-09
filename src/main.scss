@@ -298,12 +298,50 @@ main {
         justify-self: center;
         grid-template-columns: repeat(2, 15vh [line-ver]) 15vh;
         grid-template-rows: repeat(2, 15vh [line-hor]) 15vh;
+        gap: 12px;
         &-tile {
             &.--nought::before {
-                border: 32px solid #dc143c;
+                width: 40%;
+                height: 40%;
+                border: 12px solid #dc143c;
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%) scale(0.4);
+                transform: translate(-50%, -50%);
+            }
+            &.--cross {
+                &::after, &::before {
+                    content: '';
+                    width: 56%;
+                    height: 12px;
+                    background: #008080;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                }
+                &::after {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+                &::before {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+        }
+    }
+    .strikeout {
+        border: 6px solid #fff;
+        border-radius: 6px;
+        &.--combination- {
+            &0 {
+                transform: translateY(-80%);
+            }
+            &2 {
+                transform: translateY(-20%);
+            }
+            &3 {
+                transform: translateX(-80%);
+            }
+            &5 {
+                transform: translate(-13%);
             }
         }
     }
