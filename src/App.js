@@ -16,11 +16,13 @@ class App extends Component {
         ];
         this.state = {
             currentOwner: "nought",
+            winner: "",
+            winningCombination: {},
             noughtOwned: [],
             crossOwned: [],
             victory: false,
             tilesShouldReset: false,
-            message: "Click a tile to begin!",
+            message: "Click a tile to begin",
             messagePlayAgain: " "
         };
     }
@@ -36,7 +38,6 @@ class App extends Component {
             }
             : null}
             targetOwnership={this.state.currentOwner}
-            gameResolved={this.state.victory}
             shouldTileReset={this.state.tilesShouldReset}
             onReset={this.toggleTilesShouldReset.bind(this)}
             key={index} id={index} />
@@ -52,22 +53,21 @@ class App extends Component {
 
     checkWinner(owner) {
         const name = `${owner}Owned`;
-        if (!!this.combinations.map(combination =>
-            combination.every(element =>
-                this.state[name].includes(element))).reduce((prev, curr) =>
-                    prev |= curr)) {
+        const check = this.combinations.map(combination => combination.every(element => this.state[name].includes(element)));
+        if (!!check.reduce((prev, curr) => prev |= curr)) {
             this.setState({
                 currentOwner: null,
+                winningCombination: check.indexOf(true),
                 victory: true,
-                messagePlayAgain: "Play again?"
+                messagePlayAgain: "Play again"
             });
             if (owner === "nought") {
-                this.setState({ message: "Noughts have won!"})
+                this.setState({ winner: "noughts", message: " have won"})
             } else if (owner === "cross") {
-                this.setState({ message: "Crosses have won!"})
+                this.setState({ winner: "crosses", message: " have won"})
             }
         } else if (this.state[name].length === 5 && !this.state.victory) {
-            this.setState({ message: "Game over!", messagePlayAgain: "Play again?"})
+            this.setState({ winner: "draw", message: "It's a ", messagePlayAgain: "Play again"})
         } else null;
     }
 
@@ -83,6 +83,8 @@ class App extends Component {
     reset() {
         this.setState({
             currentOwner: "nought",
+            winner: "",
+            winningCombination: {},
             noughtOwned: [],
             crossOwned: [],
             victory: false,
@@ -93,6 +95,7 @@ class App extends Component {
     }
 
     render() {
+        const {winner, winningCombination} = this.state;
         return (
             <div className="container">
                 <header>
@@ -102,12 +105,22 @@ class App extends Component {
                     </div>
                 </header>
                 <main>
-                    <div className="board">
+                    <div className={"board" + (winner ? ` --finish` : ``)} onClick={winner ? () => this.reset() : null}>
                         {this.generateTiles()}
+                        {this.state.victory ?
+                            <div className={"strikeout"
+                                + ` --combination-${winningCombination}`
+                                + (winningCombination >= 6 ? ` --diagonal` : winningCombination >= 3 ? ` --vertical` : winningCombination >= 0 ? ` --horizontal` : ``)}></div>
+                        : null}
                     </div>
-                    <div className="message">
-                        <span className="message-text --gameOver">{this.state.message}</span>
-                        <span className="message-text --newGame" onClick={() => this.reset()}>{this.state.messagePlayAgain}</span>
+
+                    {/* TODO: Refactor this to a separate component */ }
+                    <div className={"message" + (winner ? ` --${winner}` : ` --start`)}>
+                        <span className="message__text">
+                            <span className="message__textWinner">{winner}</span>
+                            {this.state.message}
+                        </span>
+                        <button className="message__button" onClick={() => this.reset()}>{this.state.messagePlayAgain}</button>
                     </div>
                 </main>
             </div>
