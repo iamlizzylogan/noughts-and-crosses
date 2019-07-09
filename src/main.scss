@@ -331,6 +331,54 @@ main {
     .board {
         grid-template-columns: repeat(2, 90px [line-ver]) 90px;
         grid-template-rows: repeat(2, 90px [line-hor]) 90px;
+        grid-gap: 10px;
+        &-tile {
+            &.--nought::before {
+                width: 35%;
+                height: 35%;
+                background: rgba(0, 0, 0, 0);
+                border: 10px solid #dc143c;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            &.--cross {
+                &::after, &::before {
+                    width: calc(35% + 20px);
+                    height: 10px;
+                    background: #008080;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                }
+                &::after {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+                &::before {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+        }
+    }
+    .strikeout {
+        border: 5px solid #fff;
+        border-radius: 5px;
+        &.--combination- {
+            &0 {
+                transform: translateY(-93%);
+            }
+            &2 {
+                transform: translateY(-20%);
+            }
+            &3 {
+                transform: translateX(-77%);
+            }
+            &5 {
+                transform: translate(-17%);
+            }
+        }
     }
     .message {
         position: absolute;
