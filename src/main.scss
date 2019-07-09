@@ -417,7 +417,7 @@ main {
     .board {
         grid-template-columns: repeat(2, 90px [line-ver]) 90px;
         grid-template-rows: repeat(2, 90px [line-hor]) 90px;
-        grid-gap: 10px;
+        gap: 10px;
         &-tile {
             &.--nought::before {
                 width: 35%;
@@ -474,7 +474,7 @@ main {
 
 @media (min-width: 320px) and (max-width: 394px) {
     .board {
-        grid-gap: 10px;
+        gap: 10px;
         &-tile {
             &.--nought::before {
                 width: 35%;
