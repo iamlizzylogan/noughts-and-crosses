@@ -234,24 +234,29 @@ main {
 
 .strikeout {
     position: absolute;
-    border: 3px solid #fff;
-    border-radius: 3px;
+    border: calc(var(--board-element) / 2) solid #fff;
+    border-radius: calc(var(--board-element) / 2);
     &.--horizontal {
         width: 90%;
         height: 0;
-        transform: translateY(-50%);
         &.--combination- {
             &0 {
                 top: 16.666%;
                 left: 5%;
+                transform: translateY(-93%);
+                @include breakpoint(large) {
+                    transform: translateY(-80%);
+                }
             }
             &1 {
                 top: 50%;
                 left: 5%;
+                transform: translateY(-50%);
             }
             &2 {
                 top: 83.333%;
                 left: 5%;
+                transform: translateY(-20%);
             }
         }
     }
@@ -263,6 +268,16 @@ main {
             &3 {
                 top: 5%;
                 left: 16.666%;
+                transform: translateX(-93%);
+                @include breakpoint(small) {
+                    transform: translateX(-77%);
+                }
+                @include breakpoint(medium) {
+                    transform: translateX(-94%);
+                }
+                @include breakpoint(large) {
+                    transform: translateX(-80%);
+                }
             }
             &4 {
                 top: 5%;
@@ -271,6 +286,13 @@ main {
             &5 {
                 top: 5%;
                 left: 83.333%;
+                transform: translateX(-8%);
+                @include breakpoint(small) {
+                    transform: translateX(-17%);
+                }
+                @include breakpoint(large) {
+                    transform: translateX(-13%);
+                }
             }
         }
     }
@@ -298,24 +320,6 @@ main {
         grid-template-columns: repeat(2, 15vh [line-ver]) 15vh;
         grid-template-rows: repeat(2, 15vh [line-hor]) 15vh;
     }
-    .strikeout {
-        border: 6px solid #fff;
-        border-radius: 6px;
-        &.--combination- {
-            &0 {
-                transform: translateY(-80%);
-            }
-            &2 {
-                transform: translateY(-20%);
-            }
-            &3 {
-                transform: translateX(-80%);
-            }
-            &5 {
-                transform: translate(-13%);
-            }
-        }
-    }
 }
 
 @media (min-width: 713px) and (max-width: 1052px) {
@@ -323,24 +327,6 @@ main {
         justify-self: center;
         grid-template-columns: repeat(2, 90px [line-ver]) 90px;
         grid-template-rows: repeat(2, 90px [line-hor]) 90px;
-    }
-    .strikeout {
-        border: 5px solid #fff;
-        border-radius: 5px;
-        &.--combination- {
-            &0 {
-                transform: translateY(-93%);
-            }
-            &2 {
-                transform: translateY(-20%);
-            }
-            &3 {
-                transform: translateX(-94%);
-            }
-            &5 {
-                transform: translate(-17%);
-            }
-        }
     }
 }
 
@@ -350,24 +336,6 @@ main {
         grid-template-rows: repeat(2, 90px [line-hor]) 90px;
         gap: var(--board-element);
     }
-    .strikeout {
-        border: 5px solid #fff;
-        border-radius: 5px;
-        &.--combination- {
-            &0 {
-                transform: translateY(-93%);
-            }
-            &2 {
-                transform: translateY(-20%);
-            }
-            &3 {
-                transform: translateX(-77%);
-            }
-            &5 {
-                transform: translate(-17%);
-            }
-        }
-    }
     .message {
         position: absolute;
         top: 0;
@@ -375,24 +343,6 @@ main {
 }
 
 @media (min-width: 320px) and (max-width: 394px) {
-    .strikeout {
-        border: 5px solid #fff;
-        border-radius: 5px;
-        &.--combination- {
-            &0 {
-                transform: translateY(-93%);
-            }
-            &2 {
-                transform: translateY(-20%);
-            }
-            &3 {
-                transform: translateX(-93%);
-            }
-            &5 {
-                transform: translate(-8%);
-            }
-        }
-    }
     .message {
         position: absolute;
         top: 1vh;
