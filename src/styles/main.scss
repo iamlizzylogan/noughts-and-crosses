@@ -160,7 +160,7 @@ main {
         grid-template-rows: repeat(3, 15vh);
     }
     gap: var(--board-element);
-    background: #ccc;
+    background: #ddd;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     &__tile {
         background: #222;
