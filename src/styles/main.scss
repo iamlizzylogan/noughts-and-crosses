@@ -53,7 +53,7 @@ main {
     @include breakpoint(medium) {
         height: 75vh;
         display: grid;
-        grid-template-columns: 45vw [line-ver] 45vw;
+        grid-template-columns: 45vw 45vw;
     }
 }
 
@@ -157,18 +157,18 @@ main {
 .board {
     display: grid;
     position: relative;
-    grid-template-columns: repeat(2, 25vw [line-ver]) 25vw;
-    grid-template-rows: repeat(2, 25vw [line-hor]) 25vw;
+    grid-template-columns: repeat(3, 25vw);
+    grid-template-rows: repeat(3, 25vw);
     @include breakpoint(small) {
-        grid-template-columns: repeat(2, 90px [line-ver]) 90px;
-        grid-template-rows: repeat(2, 90px [line-hor]) 90px;
+        grid-template-columns: repeat(3, 90px);
+        grid-template-rows: repeat(3, 90px);
     }
     @include breakpoint(medium) {
         justify-self: center;
     }
     @include breakpoint(large) {
-        grid-template-columns: repeat(2, 15vh [line-ver]) 15vh;
-        grid-template-rows: repeat(2, 15vh [line-hor]) 15vh;
+        grid-template-columns: repeat(3, 15vh);
+        grid-template-rows: repeat(3, 15vh);
     }
     gap: var(--board-element);
     background: #ccc;
