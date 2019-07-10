@@ -3,6 +3,7 @@
 
 @import 'reset';
 @import 'breakpoints';
+@import 'play-again-button';
 @import 'variables';
 
 .container {
@@ -97,19 +98,7 @@ main {
                 }
             }
             &__button {
-                color: inherit;
-                font-family: inherit;
-                margin-top: 14px;
-                padding: 11px 56px;
-                font-size: 1em;
-                background: #303030;
-                border: 1px solid #f1f1f1;
-                border-radius: 4px;
-                &:hover {
-                    cursor: pointer;
-                    background: lighten(#303030, 5%);
-                    transition: ease-in .25s;
-                }
+                @include play-again-button(#f1f1f1, #303030)
             }
         }
     }
@@ -125,19 +114,7 @@ main {
                 border-radius: 50%;
             }
             &__button {
-                color: inherit;
-                font-family: inherit;
-                margin-top: 14px;
-                padding: 11px 56px;
-                font-size: 1em;
-                background: #302222;
-                border: 1px solid #dc143c;
-                border-radius: 4px;
-                &:hover {
-                    cursor: pointer;
-                    background: lighten(#302222, 5%);
-                    transition: ease-in .25s;
-                }
+                @include play-again-button(nought-cl), #302222)
             }
         }
     }
@@ -168,19 +145,7 @@ main {
                 }
             }
             &__button {
-                color: inherit;
-                font-family: inherit;
-                margin-top: 14px;
-                padding: 11px 56px;
-                font-size: 1em;
-                background: #223030;
-                border: 1px solid #008080;
-                border-radius: 4px;
-                &:hover {
-                    cursor: pointer;
-                    background: lighten(#223030, 5%);
-                    transition: ease-in .25s;
-                }
+                @include play-again-button(cross-cl), #223030)
             }
         }
     }
