@@ -22,19 +22,17 @@
     }
 }
 
-header {
-    .app-logo {
-        margin-top: 7px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: Staatliches;
-        font-weight: 400;
-        font-size: 3em;
-        &-title-part {
-            line-height: 1;
-        }
+.logo {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Staatliches;
+    font-weight: 400;
+    font-size: 3em;
+    &__titlePart {
+        line-height: 1;
     }
 }
 
@@ -83,66 +81,58 @@ main {
             font-weight: 800;
         }
     }
-    &.--start {
-        .message__button {
-            display: none;
+    &.--start .message__button {
+        display: none;
+    }
+    &.--draw .message {
+        &__text {
+            letter-spacing: 0.03em;
+            &Winner {
+                margin-right: 1px;
+                order: 1;
+            }
+        }
+        &__button {
+            @include play-again-button(off-white, #303030)
         }
     }
-    &.--draw {
-        .message {
-            &__text {
-                letter-spacing: 0.03em;
-                &Winner {
-                    margin-right: 1px;
-                    order: 1;
+    &.--noughts .message {
+        &__textWinner::before {
+            content: '';
+            width: 1em;
+            height: 1em;
+            margin-right: 7px;
+            background: rgba(0,0,0,0);
+            border: 5px solid var(--nought-cl);
+            border-radius: 50%;
+        }
+        &__button {
+            @include play-again-button(nought-cl, #302222)
+        }
+    }
+    &.--crosses .message {
+        &__text {
+            margin-right: -7px;
+            &Winner {
+                &::after, &::before {
+                    content: '';
+                    height: 1.41em;
+                    padding: 4px;
+                    border-left: 7px solid var(--cross-cl);
+                    background: rgba(0,0,0,0);
+                    order: -1;
+                }
+                &::after {
+                    transform: rotate(-45deg) translate(-27%, -27%);
+                }
+                &::before {
+                    margin-right: -10px;
+                    transform: rotate(45deg) translate(-10%, 13%);
                 }
             }
-            &__button {
-                @include play-again-button(off-white, #303030)
-            }
         }
-    }
-    &.--noughts {
-        .message {
-            &__textWinner::before {
-                content: '';
-                width: 1em;
-                height: 1em;
-                margin-right: 7px;
-                background: rgba(0,0,0,0);
-                border: 5px solid var(--nought-cl);
-                border-radius: 50%;
-            }
-            &__button {
-                @include play-again-button(nought-cl, #302222)
-            }
-        }
-    }
-    &.--crosses {
-        .message {
-            &__text {
-                margin-right: -7px;
-                &Winner {
-                    &::after, &::before {
-                        content: '';
-                        height: 1.41em;
-                        padding: 4px;
-                        border-left: 7px solid var(--cross-cl);
-                        background: rgba(0,0,0,0);
-                        order: -1;
-                    }
-                    &::after {
-                        transform: rotate(-45deg) translate(-27%, -27%);
-                    }
-                    &::before {
-                        margin-right: -10px;
-                        transform: rotate(45deg) translate(-10%, 13%);
-                    }
-                }
-            }
-            &__button {
-                @include play-again-button(cross-cl, #223030)
-            }
+        &__button {
+            @include play-again-button(cross-cl, #223030)
         }
     }
 }
@@ -166,7 +156,7 @@ main {
     gap: var(--board-element);
     background: #ccc;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    &-tile {
+    &__tile {
         background: #222;
         position: relative;
         &.--empty:hover {
