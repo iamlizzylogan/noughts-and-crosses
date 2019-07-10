@@ -181,6 +181,17 @@ main {
     position: relative;
     grid-template-columns: repeat(2, 25vw [line-ver]) 25vw;
     grid-template-rows: repeat(2, 25vw [line-hor]) 25vw;
+    @include breakpoint(small) {
+        grid-template-columns: repeat(2, 90px [line-ver]) 90px;
+        grid-template-rows: repeat(2, 90px [line-hor]) 90px;
+    }
+    @include breakpoint(medium) {
+        justify-self: center;
+    }
+    @include breakpoint(large) {
+        grid-template-columns: repeat(2, 15vh [line-ver]) 15vh;
+        grid-template-rows: repeat(2, 15vh [line-hor]) 15vh;
+    }
     gap: var(--board-element);
     background: #ccc;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -314,28 +325,7 @@ main {
     }
 }
 
-@media (min-width: 1053px) {
-    .board {
-        justify-self: center;
-        grid-template-columns: repeat(2, 15vh [line-ver]) 15vh;
-        grid-template-rows: repeat(2, 15vh [line-hor]) 15vh;
-    }
-}
-
-@media (min-width: 713px) and (max-width: 1052px) {
-    .board {
-        justify-self: center;
-        grid-template-columns: repeat(2, 90px [line-ver]) 90px;
-        grid-template-rows: repeat(2, 90px [line-hor]) 90px;
-    }
-}
-
 @media (min-width: 395px) and (max-width: 712px) {
-    .board {
-        grid-template-columns: repeat(2, 90px [line-ver]) 90px;
-        grid-template-rows: repeat(2, 90px [line-hor]) 90px;
-        gap: var(--board-element);
-    }
     .message {
         position: absolute;
         top: 0;
