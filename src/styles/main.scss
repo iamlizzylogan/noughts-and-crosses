@@ -98,11 +98,8 @@ main {
                 }
             }
             &__button {
-                @include play-again-button(#f1f1f1, #303030)
+                @include play-again-button(off-white, #303030)
             }
-        }
-        &__button {
-            @include play-again-button(off-white, #303030)
         }
     }
     &.--noughts {
@@ -117,7 +114,7 @@ main {
                 border-radius: 50%;
             }
             &__button {
-                @include play-again-button(nought-cl), #302222)
+                @include play-again-button(nought-cl, #302222)
             }
         }
     }
@@ -126,30 +123,26 @@ main {
             &__text {
                 margin-right: -7px;
                 &Winner {
-                    &::after {
+                    &::after, &::before {
                         content: '';
                         height: 1.41em;
                         padding: 4px;
                         border-left: 7px solid var(--cross-cl);
                         background: rgba(0,0,0,0);
-                        transform: rotate(-45deg) translate(-27%, -27%);
                         order: -1;
                     }
+                    &::after {
+                        transform: rotate(-45deg) translate(-27%, -27%);
+                    }
                     &::before {
-                        content: '';
-                        height: 1.41em;
-                        padding: 4px;
                         margin-right: -10px;
-                        border-left: 7px solid var(--cross-cl);
-                        background: rgba(0,0,0,0);
                         transform: rotate(45deg) translate(-10%, 13%);
-                        order: -1;
                     }
                 }
             }
-        }
-        &__button {
-            @include play-again-button(cross-cl, #223030)
+            &__button {
+                @include play-again-button(cross-cl, #223030)
+            }
         }
     }
 }
