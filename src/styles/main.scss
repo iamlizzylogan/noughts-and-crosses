@@ -110,7 +110,7 @@ main {
                 height: 1em;
                 margin-right: 7px;
                 background: rgba(0,0,0,0);
-                border: 5px solid #dc143c;
+                border: 5px solid var(--nought-cl);
                 border-radius: 50%;
             }
             &__button {
@@ -127,7 +127,7 @@ main {
                         content: '';
                         height: 1.41em;
                         padding: 4px;
-                        border-left: 7px solid #008080;
+                        border-left: 7px solid var(--cross-cl);
                         background: rgba(0,0,0,0);
                         transform: rotate(-45deg) translate(-27%, -27%);
                         order: -1;
@@ -137,7 +137,7 @@ main {
                         height: 1.41em;
                         padding: 4px;
                         margin-right: -10px;
-                        border-left: 7px solid #008080;
+                        border-left: 7px solid var(--cross-cl);
                         background: rgba(0,0,0,0);
                         transform: rotate(45deg) translate(-10%, 13%);
                         order: -1;
