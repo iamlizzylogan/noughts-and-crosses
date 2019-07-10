@@ -10,7 +10,7 @@
     height: 100vh;
     font-family: sans-serif;
     white-space: pre-wrap;
-    color: #f1f1f1;
+    color: var(--off-white);
     background: #222;
     position: fixed;
     display: flex;
@@ -101,6 +101,9 @@ main {
                 @include play-again-button(#f1f1f1, #303030)
             }
         }
+        &__button {
+            @include play-again-button(off-white, #303030)
+        }
     }
     &.--noughts {
         .message {
@@ -144,9 +147,9 @@ main {
                     }
                 }
             }
-            &__button {
-                @include play-again-button(cross-cl), #223030)
-            }
+        }
+        &__button {
+            @include play-again-button(cross-cl, #223030)
         }
     }
 }
