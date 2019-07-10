@@ -7,11 +7,10 @@
 @import 'variables';
 
 .container {
-    height: 100vh;
+    height: 100%;
     font-family: sans-serif;
     white-space: pre-wrap;
     color: var(--off-white);
-    background: #222;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -22,8 +21,12 @@
     }
 }
 
+header {
+    height: 116px;
+}
+
 .logo {
-    margin-top: 7px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,17 +41,19 @@
 
 main {
     width: 100vw;
-    height: 75vh;
+    height: calc(100% - 116px);
     display: flex;
-    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
+    flex-direction: column-reverse;
     position: relative;
+    bottom: 0;
     @include breakpoint(small) {
         height: 80vh;
         justify-content: space-evenly;
     }
     @include breakpoint(medium) {
+        align-items: center;
         height: 75vh;
         display: grid;
         grid-template-columns: 45vw 45vw;
@@ -60,12 +65,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include breakpoint(medium, max) {
-        position: absolute;
-        top: 0;
-    }
     @include breakpoint(small, max) {
-        top: 1vh;
+        margin-top: auto;
+        top: 14%;
         &__button {
             display: none;
         }
@@ -145,6 +147,10 @@ main {
     @include breakpoint(small) {
         grid-template-columns: repeat(3, 90px);
         grid-template-rows: repeat(3, 90px);
+    }
+    @include breakpoint(small, max) {
+        margin-top: auto;
+        margin-bottom: 50px;
     }
     @include breakpoint(medium) {
         justify-self: center;
