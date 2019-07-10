@@ -39,7 +39,16 @@ main {
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    position: relative;
+position: relative;
+    @include breakpoint(small) {
+        height: 80vh;
+        justify-content: space-evenly;
+    }
+    @include breakpoint(medium) {
+        height: 75vh;
+        display: grid;
+        grid-template-columns: 45vw [line-ver] 45vw;
+    }
 }
 
 .message {
@@ -278,10 +287,6 @@ main {
     .container {
         justify-content: flex-start;
     }
-    main {
-        display: grid;
-        grid-template-columns: 45vw [line-ver] 45vw;
-    }
     .board {
         justify-self: center;
         grid-template-columns: repeat(2, 15vh [line-ver]) 15vh;
@@ -336,10 +341,6 @@ main {
 }
 
 @media (min-width: 713px) and (max-width: 1052px) {
-    main {
-        display: grid;
-        grid-template-columns: 45vw [line-ver] 45vw;
-    }
     .board {
         justify-self: center;
         grid-template-columns: repeat(2, 90px [line-ver]) 90px;
@@ -396,12 +397,6 @@ main {
 }
 
 @media (min-width: 395px) and (max-width: 712px) {
-    main {
-        height: 80vh;
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: space-evenly;
-    }
     .board {
         grid-template-columns: repeat(2, 90px [line-ver]) 90px;
         grid-template-rows: repeat(2, 90px [line-hor]) 90px;
