@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap');
+
+@import 'reset';
+@import 'breakpoints';
+@import 'play-again-button';
+@import 'variables';
+
+.container {
+    height: 100vh;
+    font-family: sans-serif;
+    white-space: pre-wrap;
+    color: var(--off-white);
+    background: #222;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    @include breakpoint(large) {
+        justify-content: flex-start;
+    }
+}
+
+.logo {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Staatliches;
+    font-weight: 400;
+    font-size: 3em;
+    &__titlePart {
+        line-height: 1;
+    }
+}
+
+main {
+    width: 100vw;
+    height: 75vh;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    @include breakpoint(small) {
+        height: 80vh;
+        justify-content: space-evenly;
+    }
+    @include breakpoint(medium) {
+        height: 75vh;
+        display: grid;
+        grid-template-columns: 45vw 45vw;
+    }
+}
+
+.message {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include breakpoint(medium, max) {
+        position: absolute;
+        top: 0;
+    }
+    @include breakpoint(small, max) {
+        top: 1vh;
+        &__button {
+            display: none;
+        }
+    }
+    &__text {
+        display: inline-flex;
+        align-items: center;
+        font-size: 17px;
+        &Winner {
+            display: inline-flex;
+            align-items: center;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+    }
+    &.--start .message__button {
+        display: none;
+    }
+    &.--draw .message {
+        &__text {
+            letter-spacing: 0.03em;
+            &Winner {
+                margin-right: 1px;
+                order: 1;
+            }
+        }
+        &__button {
+            @include play-again-button(off-white, #303030)
+        }
+    }
+    &.--noughts .message {
+        &__textWinner::before {
+            content: '';
+            width: 1em;
+            height: 1em;
+            margin-right: 7px;
+            background: rgba(0,0,0,0);
+            border: 5px solid var(--nought-cl);
+            border-radius: 50%;
+        }
+        &__button {
+            @include play-again-button(nought-cl, #302222)
+        }
+    }
+    &.--crosses .message {
+        &__text {
+            margin-right: -7px;
+            &Winner {
+                &::after, &::before {
+                    content: '';
+                    height: 1.41em;
+                    padding: 4px;
+                    border-left: 7px solid var(--cross-cl);
+                    background: rgba(0,0,0,0);
+                    order: -1;
+                }
+                &::after {
+                    transform: rotate(-45deg) translate(-27%, -27%);
+                }
+                &::before {
+                    margin-right: -10px;
+                    transform: rotate(45deg) translate(-10%, 13%);
+                }
+            }
+        }
+        &__button {
+            @include play-again-button(cross-cl, #223030)
+        }
+    }
+}
+
+.board {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(3, 25vw);
+    grid-template-rows: repeat(3, 25vw);
+    @include breakpoint(small) {
+        grid-template-columns: repeat(3, 90px);
+        grid-template-rows: repeat(3, 90px);
+    }
+    @include breakpoint(medium) {
+        justify-self: center;
+    }
+    @include breakpoint(large) {
+        grid-template-columns: repeat(3, 15vh);
+        grid-template-rows: repeat(3, 15vh);
+    }
+    gap: var(--board-element);
+    background: #ccc;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    &__tile {
+        background: #222;
+        position: relative;
+        &.--empty:hover {
+            cursor: pointer;
+        }
+        &.--nought::before {
+            content: '';
+            width: 35%;
+            height: 35%;
+            @include breakpoint(large) {
+                width: 40%;
+                height: 40%;
+            }
+            background: rgba(0, 0, 0, 0);
+            border: var(--board-element) solid var(--nought-cl);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        &.--cross {
+            &::after, &::before {
+                content: '';
+                width: calc(35% + 20px);
+                height: var(--board-element);
+                background: var(--cross-cl);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                @include breakpoint(large) {
+                    width: 56%;
+                }
+            }
+            &::after {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+            &::before {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+        }
+    }
+    &.--finish:hover {
+        cursor: pointer;
+    }
+}
+
+.strikeout {
+    position: absolute;
+    border: calc(var(--board-element) / 2) solid #fff;
+    border-radius: calc(var(--board-element) / 2);
+    &.--horizontal {
+        width: 90%;
+        height: 0;
+        &.--combination- {
+            &0 {
+                top: 16.666%;
+                left: 5%;
+                transform: translateY(-93%);
+                @include breakpoint(large) {
+                    transform: translateY(-80%);
+                }
+            }
+            &1 {
+                top: 50%;
+                left: 5%;
+                transform: translateY(-50%);
+            }
+            &2 {
+                top: 83.333%;
+                left: 5%;
+                transform: translateY(-20%);
+            }
+        }
+    }
+    &.--vertical {
+        width: 0;
+        height: 90%;
+        transform: translateX(-50%);
+        &.--combination- {
+            &3 {
+                top: 5%;
+                left: 16.666%;
+                transform: translateX(-93%);
+                @include breakpoint(small) {
+                    transform: translateX(-77%);
+                }
+                @include breakpoint(medium) {
+                    transform: translateX(-94%);
+                }
+                @include breakpoint(large) {
+                    transform: translateX(-80%);
+                }
+            }
+            &4 {
+                top: 5%;
+                left: 50%;
+            }
+            &5 {
+                top: 5%;
+                left: 83.333%;
+                transform: translateX(-8%);
+                @include breakpoint(small) {
+                    transform: translateX(-17%);
+                }
+                @include breakpoint(large) {
+                    transform: translateX(-13%);
+                }
+            }
+        }
+    }
+    &.--diagonal {
+        width: 0;
+        height: 127.279%;
+        &.--combination- {
+            &6 {
+                left: 50%;
+                top: -13.64%;
+                transform: translate(-50%) rotate(-45deg);
+            }
+            &7 {
+                left: 50%;
+                top: -13.64%;
+                transform: translate(-50%) rotate(45deg);
+            }
+        }
+    }
+}

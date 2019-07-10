@@ -1,0 +1,21 @@
+$breakpoints: (
+    tiny: 320px,
+    small: 395px,
+    medium: 713px,
+    large: 1053px
+);
+
+@mixin breakpoint($name, $mode: min) {
+    $mQueryValue: $name;
+    @if map-has-key($breakpoints, $name) {
+        $mQueryValue: map-get($breakpoints, $name);
+    }
+    @if $mode != max and $mode != min {
+        @warn 'The $mode param accepts \'min\' or \'max\' values only';
+    } @else if $mode == max {
+        $mQueryValue: $mQueryValue - 1px;
+    }
+    @media screen and (#{$mode}-width: #{$mQueryValue}) {
+        @content;
+    }
+}

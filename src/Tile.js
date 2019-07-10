@@ -41,9 +41,9 @@ export default class Tile extends Component {
 
     setClassNames() {
         if (this.state.empty) {
-            return `board-tile --empty`
+            return `board__tile --empty`
         } else if (this.state.ownership) {
-            return `board-tile --${this.state.ownership}`
+            return `board__tile --${this.state.ownership}`
         }
     }
 

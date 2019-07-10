@@ -1,0 +1,16 @@
+
+@mixin play-again-button($primary, $secondary) {
+    color: inherit;
+    font-family: inherit;
+    margin-top: 14px;
+    padding: 11px 56px;
+    font-size: 1em;
+    background: $secondary;
+    border: 1px solid var(--#{$primary});
+    border-radius: 4px;
+    &:hover {
+        cursor: pointer;
+        background: lighten($secondary, 5%);
+        transition: ease-in .25s;
+    }
+}

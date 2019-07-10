@@ -99,9 +99,9 @@ class App extends Component {
         return (
             <div className="container">
                 <header>
-                    <div className="app-logo">
-                    <span className="app-logo-title-part">Noughts</span>
-                    <span className="app-logo-title-part">& Crosses</span>
+                    <div className="logo">
+                    <span className="logo__titlePart">Noughts</span>
+                    <span className="logo__titlePart">& Crosses</span>
                     </div>
                 </header>
                 <main>

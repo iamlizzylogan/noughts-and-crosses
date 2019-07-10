@@ -1,0 +1,10 @@
+
+:root {
+    --nought-cl: #dc143c;
+    --cross-cl: #008080;
+    --off-white: #f1f1f1;
+    --board-element: 10px;
+    @include breakpoint(large) {
+        --board-element: 12px;
+    }
+}
