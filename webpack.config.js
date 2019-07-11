@@ -80,7 +80,7 @@ module.exports = {
        }),
        new CopyPlugin([
          { from: 'manifest.json', to: '' },
-         { from: './src/icons', to: 'icons/' },
+         { from: './src/icon', to: 'icon/' },
        ])
     ]
 }
