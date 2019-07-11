@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/main.js',
@@ -76,6 +77,10 @@ module.exports = {
        new MiniCssExtractPlugin({
          filename: '[name].css',
          chunkFilename: '[id].css',
-       })
+       }),
+       new CopyPlugin([
+         { from: 'manifest.json', to: '' },
+         { from: './src/icons', to: 'icons/' },
+       ])
     ]
 }
