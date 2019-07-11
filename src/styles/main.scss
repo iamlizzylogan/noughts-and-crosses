@@ -212,6 +212,7 @@ main {
 
 .strikeout {
     position: absolute;
+    background: #fff;
     border: calc(var(--board-element) / 2) solid #fff;
     border-radius: calc(var(--board-element) / 2);
     &.--horizontal {
