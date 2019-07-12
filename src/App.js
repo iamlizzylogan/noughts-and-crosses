@@ -98,6 +98,7 @@ class App extends Component {
         const {winner, winningCombination} = this.state;
         return (
             <div className="container">
+                <div className="landscape__message">Please go back to portrait</div>
                 <header>
                     <div className="logo">
                     <span className="logo__titlePart">Noughts</span>
