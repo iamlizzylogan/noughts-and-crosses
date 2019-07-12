@@ -98,7 +98,22 @@ class App extends Component {
         const {winner, winningCombination} = this.state;
         return (
             <div className="container">
-                <div className="landscape__message">Please go back to portrait</div>
+                <div className="landscape">
+                <svg className="landscape__icon" xmlns="http://www.w3.org/2000/svg" style={{isolation:'isolate'}} viewBox="0 0 181.417 181.417" width="241.889" height="241.889" fill="#ddd">
+                    <defs>
+                        <clipPath id="a">
+                            <path d="M0 0h181.417v181.417H0z"/>
+                        </clipPath>
+                    </defs>
+                    <g clipPath="url(#a)">
+                        <path d="M14.511 0C6.527 0 0 6.527 0 14.511v152.396c0 7.984 6.527 14.51 14.511 14.51h67.772c7.984 0 14.51-6.526 14.51-14.51V14.511C96.793 6.527 90.267 0 82.283 0H14.511zm0 6.284h9.423c-.014.149-.044.293-.044.447v.611a4.553 4.553 0 0 0 4.564 4.564H68.34a4.553 4.553 0 0 0 4.563-4.564v-.611c0-.154-.029-.298-.044-.447h9.424c4.61 0 8.219 3.617 8.219 8.227v152.396c0 4.61-3.609 8.219-8.219 8.219H14.511c-4.61 0-8.22-3.609-8.22-8.219V14.511c0-4.61 3.61-8.227 8.22-8.227z" fillRule="evenodd"/>
+                        <path d="M102.603 84.06v6.291h64.304c4.61 0 8.227 3.61 8.227 8.22v9.423c-.15-.015-.294-.044-.447-.044h-.612a4.555 4.555 0 0 0-4.564 4.564V152.4a4.554 4.554 0 0 0 4.564 4.563h.612c.153 0 .297-.029.447-.044v9.424c0 4.61-3.617 8.219-8.227 8.219H96.732v6.292h70.175c7.984 0 14.51-6.527 14.51-14.511V98.571c0-7.984-6.526-14.511-14.51-14.511h-64.304zM120.016 16.797l-10.058 6.861 10.058 6.86v-4.554c19.114 0 35.154 15.902 35.154 35.156h-4.552l6.86 10.057 6.861-10.057h-4.978c0-21.316-18.029-39.344-39.345-39.344v-4.979z"/>
+                    </g>
+                </svg>
+                <span className="landscape__message">
+                    Please go back to portrait
+                </span>
+                </div>
                 <header>
                     <div className="logo">
                     <span className="logo__titlePart">Noughts</span>
