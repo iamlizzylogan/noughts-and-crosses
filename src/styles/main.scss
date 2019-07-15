@@ -6,12 +6,30 @@
 @import 'play-again-button';
 @import 'variables';
 
-@keyframes stamp {
+@keyframes stamp-nought {
     from {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(.001);
+    }
+}
+
+@keyframes stamp-cross-after {
+    from {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-100%, -50%) rotate(90deg);
+    }
+}
+
+@keyframes stamp-cross-before {
+    from {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(0, -50%) rotate(90deg);
     }
 }
 
@@ -205,7 +223,7 @@ main {
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
-            animation: stamp cubic-bezier(.67, .68, .12, 1.7) .3s;
+            animation: stamp-nought cubic-bezier(.67, .68, .12, 1.7) .3s;
         }
         &.--cross {
             &::after, &::before {
@@ -221,10 +239,12 @@ main {
                 }
             }
             &::after {
-                transform: translate(-50%, -50%) rotate(-45deg);
+                transform: translate(-50%, -50%) rotate(135deg);
+                animation: stamp-cross-after cubic-bezier(.19, .5, .24, 1) .3s;
             }
             &::before {
                 transform: translate(-50%, -50%) rotate(45deg);
+                animation: stamp-cross-before cubic-bezier(.19, .5, .24, 1) .3s;
             }
         }
     }
