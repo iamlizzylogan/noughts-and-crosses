@@ -5,33 +5,7 @@
 @import 'breakpoints';
 @import 'play-again-button';
 @import 'variables';
-
-@keyframes stamp-nought {
-    from {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(.001);
-    }
-}
-
-@keyframes stamp-cross-after {
-    from {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-100%, -50%) rotate(90deg);
-    }
-}
-
-@keyframes stamp-cross-before {
-    from {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(0, -50%) rotate(90deg);
-    }
-}
+@import 'animations';
 
 .container {
     width: 100%;
@@ -261,6 +235,7 @@ main {
     &.--horizontal {
         width: 90%;
         height: 0;
+        animation: stamp-strikeout-horizontal ease-in-out .3s;
         &.--combination- {
             &0 {
                 top: 16.666%;
@@ -286,6 +261,7 @@ main {
         width: 0;
         height: 90%;
         transform: translateX(-50%);
+        animation: stamp-strikeout-vertical ease-in-out .3s;
         &.--combination- {
             &3 {
                 top: 5%;
@@ -321,6 +297,7 @@ main {
     &.--diagonal {
         width: 0;
         height: 127.279%;
+        animation: stamp-strikeout-diagonal ease-in-out .3s;
         &.--combination- {
             &6 {
                 left: 50%;
