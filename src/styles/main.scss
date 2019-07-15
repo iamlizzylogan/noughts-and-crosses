@@ -60,17 +60,13 @@ header {
 
 main {
     width: 100vw;
-    height: calc(100% - 116px);
+    height: calc(100% - 122px);
     display: flex;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    flex-direction: column-reverse;
     position: relative;
     bottom: 0;
-    @include breakpoint(small) {
-        height: 80vh;
-        justify-content: space-evenly;
-    }
     @include breakpoint(medium) {
         align-items: center;
         height: 75vh;
@@ -83,9 +79,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include breakpoint(small, max) {
+    @include breakpoint(medium, max) {
         margin-top: auto;
-        top: 14%;
         &__button {
             display: none;
         }
@@ -166,7 +161,7 @@ main {
         grid-template-columns: repeat(3, 90px);
         grid-template-rows: repeat(3, 90px);
     }
-    @include breakpoint(small, max) {
+    @include breakpoint(medium, max) {
         margin-top: auto;
         margin-bottom: 50px;
     }
