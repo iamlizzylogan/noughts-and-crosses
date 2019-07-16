@@ -22,7 +22,8 @@ class App extends Component {
             crossOwned: [],
             victory: false,
             tilesShouldReset: false,
-            message: "Click a tile to begin"
+            message: "Click a tile to begin",
+            reloaded: false
         };
     }
 
@@ -47,7 +48,7 @@ class App extends Component {
         const name = `${owner}Owned`;
         this.state[name].push(index);
 
-        this.state.noughtOwned.length === 1 ? this.setState({ message: "" }) : null;
+        this.state.noughtOwned.length === 1 ? this.setState({ message: "", reloaded: false }) : null;
     }
 
     checkWinner(owner) {
@@ -87,12 +88,13 @@ class App extends Component {
             crossOwned: [],
             victory: false,
             tilesShouldReset: true,
-            message: ""
+            message: "",
+            reloaded: true
         });
     }
 
     render() {
-        const {winner, winningCombination} = this.state;
+        const {winner, reloaded, victory, winningCombination, message} = this.state;
         return (
             <div className="container">
                 <div className="landscape">
@@ -118,9 +120,9 @@ class App extends Component {
                     </div>
                 </header>
                 <main>
-                    <div className={"board" + (winner ? ` --finish` : ``)} onClick={winner ? () => this.reset() : null}>
+                    <div className={"board" + (winner ? ` --finish` : reloaded ? ` --restart` : message === "Click a tile to begin" ? ` --start` : ``)} onClick={winner ? () => this.reset() : null}>
                         {this.generateTiles()}
-                        {this.state.victory ?
+                        {victory ?
                             <div className={"strikeout"
                                 + ` --combination-${winningCombination}`
                                 + (winningCombination >= 6 ? ` --diagonal` : winningCombination >= 3 ? ` --vertical` : winningCombination >= 0 ? ` --horizontal` : ``)}></div>
@@ -131,7 +133,7 @@ class App extends Component {
                     <div className={"message" + (winner ? ` --${winner}` : ` --start`)}>
                         <span className="message__text">
                             <span className="message__textWinner">{winner}</span>
-                            {this.state.message}
+                            {message}
                         </span>
                         <button className="message__button" onClick={() => this.reset()}>Play again</button>
                     </div>

@@ -161,7 +161,12 @@ main {
     grid-template-columns: repeat(3, 25vw);
     grid-template-rows: repeat(3, 25vw);
     gap: var(--board-element);
-    animation: whirl-board cubic-bezier(.62, .3, .3, 1.49) .8s;
+    &.--start {
+        animation: whirl-board cubic-bezier(.62, .3, .3, 1.49) .8s;
+    }
+    &.--restart {
+        animation: reload-board ease-in-out .8s;
+    }
     @include breakpoint(small) {
         grid-template-columns: repeat(3, 90px);
         grid-template-rows: repeat(3, 90px);
