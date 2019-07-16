@@ -22,8 +22,7 @@ class App extends Component {
             crossOwned: [],
             victory: false,
             tilesShouldReset: false,
-            message: "Click a tile to begin",
-            messagePlayAgain: " "
+            message: "Click a tile to begin"
         };
     }
 
@@ -58,8 +57,7 @@ class App extends Component {
             this.setState({
                 currentOwner: null,
                 winningCombination: check.indexOf(true),
-                victory: true,
-                messagePlayAgain: "Play again"
+                victory: true
             });
             if (owner === "nought") {
                 this.setState({ winner: "noughts", message: " have won"})
@@ -67,7 +65,7 @@ class App extends Component {
                 this.setState({ winner: "crosses", message: " have won"})
             }
         } else if (this.state[name].length === 5 && !this.state.victory) {
-            this.setState({ winner: "draw", message: "It's a ", messagePlayAgain: "Play again"})
+            this.setState({ winner: "draw", message: "It's a "})
         } else null;
     }
 
@@ -89,8 +87,7 @@ class App extends Component {
             crossOwned: [],
             victory: false,
             tilesShouldReset: true,
-            message: "",
-            messagePlayAgain: ""
+            message: ""
         });
     }
 
@@ -136,7 +133,7 @@ class App extends Component {
                             <span className="message__textWinner">{winner}</span>
                             {this.state.message}
                         </span>
-                        <button className="message__button" onClick={() => this.reset()}>{this.state.messagePlayAgain}</button>
+                        <button className="message__button" onClick={() => this.reset()}>Play again</button>
                     </div>
                 </main>
             </div>
