@@ -46,3 +46,9 @@
         margin-top: -11.52%;
     }
 }
+
+@keyframes whirl-board {
+    from {
+        transform: rotate(270deg) scale(0.01);
+    }
+}
