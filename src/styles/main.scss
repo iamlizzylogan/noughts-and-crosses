@@ -80,6 +80,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 0;
     @include breakpoint(medium, max) {
         margin-top: auto;
         &__button {
