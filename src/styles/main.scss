@@ -92,7 +92,7 @@ main {
         display: inline-flex;
         align-items: center;
         font-size: 17px;
-        animation: fade-in cubic-bezier(.97, 0, .91, .8) .8s, pulse-message ease-in-out infinite 1.5s;
+        animation: pulse-message ease-in-out infinite 1.5s;
         &Winner {
             display: inline-flex;
             align-items: center;
@@ -106,8 +106,11 @@ main {
             animation: none;
         }
     }
-    &.--start .message__button {
-        display: none;
+    &.--start {
+        animation: fade-in cubic-bezier(.97, 0, .91, .8) .8s;
+        & .message__button {
+            display: none;
+        }
     }
     &.--draw .message {
         &__text {
