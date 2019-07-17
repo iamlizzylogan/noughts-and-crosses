@@ -58,3 +58,9 @@
         transform: scale(0.001) rotate(-270deg);
     }
 }
+
+@keyframes pulse-message {
+    50% {
+        transform: scale(1.2);
+    }
+}
