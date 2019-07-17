@@ -174,10 +174,10 @@ main {
     grid-template-rows: repeat(3, 25vw);
     gap: var(--board-element);
     &.--start {
-        animation: whirl-board cubic-bezier(.62, .3, .3, 1.49) .8s;
+        animation: whirl-board cubic-bezier(.62, .3, .3, 1.5) .8s;
     }
     &.--restart {
-        animation: reload-board cubic-bezier(.35, -.7, .62, 1.75) .8s;
+        animation: reload-board cubic-bezier(.62, -.5, .38, 1.5) 1.6s;
     }
     @include breakpoint(small) {
         grid-template-columns: repeat(3, 90px);
