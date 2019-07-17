@@ -41,23 +41,20 @@ export default class Tile extends Component {
         }
     }
 
-    setClassNames() {
-        if (this.state.empty) {
-            return `board__tile --empty`
-        } else if (this.state.ownership) {
-            return `board__tile --${this.state.ownership}`
-        }
+    setClassNames(names) {
+        names ? this.setState({ classNames: names}) : this.setState({ classNames: `board__tile --empty`});
     }
 
     reset() {
         this.setState({empty: true, ownership: null});
+        setTimeout(this.setClassNames.bind(this), 400);
         this.onReset();
     }
 
     render() {
         return <div
             onClick={() => this.onTileClick()}
-            className={this.setClassNames()}
+            className={this.state.classNames}
             id={`tile-${this.id}`} />
     }
 }
