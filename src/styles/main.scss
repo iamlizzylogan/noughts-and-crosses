@@ -177,7 +177,7 @@ main {
         animation: whirl-board cubic-bezier(.62, .3, .3, 1.5) .8s;
     }
     &.--restart {
-        animation: reload-board cubic-bezier(.62, -.5, .38, 1.5) 1.6s;
+        animation: reload-board ease-in-out .8s;
     }
     @include breakpoint(small) {
         grid-template-columns: repeat(3, 90px);
