@@ -11,7 +11,8 @@ export default class Tile extends Component {
         this.onReset = props.onReset;
         this.state = {
             empty: true,
-            ownership: null
+            ownership: null,
+            classNames: `board__tile --empty`
         };
     }
 
@@ -29,6 +30,7 @@ export default class Tile extends Component {
 
     setOwnership() {
         this.setState({ ownership: this.targetOwnership });
+        this.setClassNames(`board__tile --${this.targetOwnership}`);
     }
 
     onTileClick() {
