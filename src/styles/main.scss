@@ -92,7 +92,7 @@ main {
         display: inline-flex;
         align-items: center;
         font-size: 17px;
-        animation: pulse-message ease-in-out infinite 1.5s;
+        animation: fade-in cubic-bezier(.97, 0, .91, .8) .8s, pulse-message ease-in-out infinite 1.5s;
         &Winner {
             display: inline-flex;
             align-items: center;
