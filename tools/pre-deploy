@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+ssh root@v-sn.io 'cd /var/www/pre.noughts-and-crosses.v-sn.io/ && git pull && npm run build && sed -i -r s/index.js\(.+\)?\"/index.js?`openssl rand -base64 8`\"/g dist/index.html'
