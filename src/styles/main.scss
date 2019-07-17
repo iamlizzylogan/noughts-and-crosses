@@ -54,6 +54,7 @@ header {
     font-family: Staatliches;
     font-weight: 400;
     font-size: 3em;
+    animation: fall-logo cubic-bezier(.62, .3, .3, 1.49) .8s;
     &__titlePart {
         line-height: 1;
     }

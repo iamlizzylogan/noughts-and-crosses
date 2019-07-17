@@ -64,3 +64,9 @@
         transform: scale(1.2);
     }
 }
+
+@keyframes fall-logo {
+    from {
+        margin-top: calc(-31px - 100%);
+    }
+}
