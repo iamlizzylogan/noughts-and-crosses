@@ -88,7 +88,7 @@ class App extends Component {
             crossOwned: [],
             victory: false,
             tilesShouldReset: true,
-            message: "",
+            message: "Click a tile to begin",
             reloaded: true
         });
     }
