@@ -240,8 +240,13 @@ main {
             }
         }
     }
-    &.--finish:hover {
-        cursor: pointer;
+    &.--finish {
+        &:hover {
+            cursor: pointer;
+        }
+        & .board__tile {
+            pointer-events: none;
+        }
     }
 }
 
