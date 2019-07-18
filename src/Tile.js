@@ -47,7 +47,7 @@ export default class Tile extends Component {
 
     reset() {
         this.setState({ empty: true, ownership: null });
-        setTimeout(this.setClassNames.bind(this, `board__tile`), 400);
+        this.state.classNames === `board__tile --empty` ? this.setClassNames(`board__tile`) : setTimeout(this.setClassNames.bind(this, `board__tile`), 400);
         setTimeout(this.setClassNames.bind(this), 800);
         this.onReset();
     }
