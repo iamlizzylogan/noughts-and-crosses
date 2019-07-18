@@ -34,7 +34,7 @@ export default class Tile extends Component {
     }
 
     onTileClick() {
-        if (!this.state.ownership) {
+        if (!this.state.ownership && this.state.classNames === `board__tile --empty`) {
             this.toggleEmpty();
             this.setOwnership();
             this.onClick();
@@ -46,8 +46,9 @@ export default class Tile extends Component {
     }
 
     reset() {
-        this.setState({empty: true, ownership: null});
-        setTimeout(this.setClassNames.bind(this), 400);
+        this.setState({ empty: true, ownership: null });
+        setTimeout(this.setClassNames.bind(this, `board__tile`), 400);
+        setTimeout(this.setClassNames.bind(this), 800);
         this.onReset();
     }
 
